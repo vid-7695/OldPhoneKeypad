@@ -2,6 +2,7 @@ import {Button, TextField} from "@fluentui/react"
 import { Stack } from "@fluentui/react/lib/Stack"
 import {useEffect, useRef, useState} from "react";
 import {getChar} from "./KeyBoardCommonUtils";
+import {AlphaNumberButton} from "./AlphaNumericButton";
 
 export interface ButtonObject{
     buttonId:Number;
@@ -12,6 +13,7 @@ export interface ButtonObject{
 interface  IKeyboardProps {
     buttonProp:ButtonObject[];
 }
+
 export const KeyboardRow:React.FC<IKeyboardProps> = ({
     buttonProp,
                                                      }) => {
@@ -47,7 +49,7 @@ export const KeyboardRow:React.FC<IKeyboardProps> = ({
             <Stack horizontal>
                 <Button  onMouseDown={() => {mouseClickActions(buttonObjects[0].buttonId)}}  />
                 <Button onMouseDown={() => {mouseClickActions(buttonObjects[1].buttonId)}} />
-                <Button onMouseDown={() => {mouseClickActions(buttonObjects[2].buttonId)}}/>
+                <AlphaNumberButton buttonID={2} inputSequence={"3def"}/>
             </Stack>
                 <Stack horizontal>
                     <Button onMouseDown={() => {mouseClickActions()}}  />
