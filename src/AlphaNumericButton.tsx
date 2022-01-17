@@ -31,16 +31,16 @@ export const AlphaNumberButton:React.FC<IAlphaNumericButton> = ({inputSequence})
             console.log(buttonCounter);
             console.log("CV");
             console.log(getChar(-1,2))
-            setButtonCounter(-1);
+            setButtonCounter(0);
             lastButtonPressTime = new Date();
             window.localStorage.setItem('lastButtonClick', new Date().toString());
             return;
         }
-        setButtonCounter(buttonCounter => buttonCounter+1);
         console.log("BC");
         console.log(buttonCounter);
         console.log("CV");
         console.log(getChar(buttonCounter,2))
+        setButtonCounter(buttonCounter => buttonCounter+1);
         lastButtonPressTime = new Date();
         window.localStorage.setItem('lastButtonClick', new Date().toString());
     };
