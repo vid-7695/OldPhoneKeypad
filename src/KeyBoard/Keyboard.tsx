@@ -1,4 +1,4 @@
-import {Button} from "@fluentui/react"
+import {Button, TextField} from "@fluentui/react"
 import {Stack} from "@fluentui/react/lib/Stack"
 import {useReducer} from "react";
 import {AlphaNumberButton} from "./AlphaNumericButton";
@@ -14,6 +14,7 @@ import {
 } from "../States/Action";
 import {getChar, isDelayedKeyPress} from "../Utils/KeyBoardCommonUtils";
 import {useKeyButtonStyles} from "../Styles/Keyboard.styles";
+import {stat} from "fs";
 
 
 
@@ -48,7 +49,7 @@ export const Keyboard:React.FC = () => {
     return (
         <Stack>
             <Stack.Item>
-                {state.currentValue}
+               <TextField placeholder={state.currentValue}/>
             </Stack.Item>
             <Stack.Item>
                 <Stack horizontal>
