@@ -1,5 +1,5 @@
 import React from 'react';
-import {Keyboard} from "./Keyboard";
+import {Keyboard} from "./KeyBoard/Keyboard";
 
 function App() {
   return (

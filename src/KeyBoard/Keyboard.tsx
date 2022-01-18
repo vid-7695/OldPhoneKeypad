@@ -2,7 +2,7 @@ import StackItem, {Button} from "@fluentui/react"
 import {Stack} from "@fluentui/react/lib/Stack"
 import {useReducer} from "react";
 import {AlphaNumberButton} from "./AlphaNumericButton";
-import {initialCounterState, State} from "./State";
+import {initialCounterState, State} from "../States/State";
 import {
     Action,
     ActionKind,
@@ -11,9 +11,9 @@ import {
     onePressAction,
     threePressAction,
     twoPressAction
-} from "./Action";
-import {getChar, isDelayedKeyPress} from "./KeyBoardCommonUtils";
-import {useKeyButtonStyles} from "./Keyboard.styles";
+} from "../States/Action";
+import {getChar, isDelayedKeyPress} from "../Utils/KeyBoardCommonUtils";
+import {useKeyButtonStyles} from "../Styles/Keyboard.styles";
 
 
 
@@ -24,21 +24,21 @@ export const Keyboard:React.FC = () => {
         var updatedButtonCounter = currentButtonCounter;
         var updatedString = currentString;
         if(isKeyCountResetNeeded){
+            console.log("Never hit");
             updatedString = updatedString +getChar(0, payLoad);
             updatedButtonCounter =1 ;
-
         } else {
-            updatedString = updatedString + payLoad.charAt(0);
+            console.log(`Updated string after : ${updatedString}`);
+            updatedString = updatedString.slice(0, -1) + payLoad.charAt(0);
+            console.log(`Updated string before : ${updatedString}`);
             updatedButtonCounter = updatedButtonCounter+1;
         }
         return {currentButtonCounter: updatedButtonCounter, currentString: updatedString};
     }
     const styles = useKeyButtonStyles();
     const reducer =  (state:State, action:Action) => {
-        console.log(state);
         const  {type, payload} = action;
         const updatedState = buttonPress(type, state.currentValue, state.currentButtonCounter, payload);
-        console.log(`Updated button counter: ${updatedState.currentButtonCounter}`)
         return {currentButtonCounter: updatedState.currentButtonCounter, currentValue: updatedState.currentString};
     }
 

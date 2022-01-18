@@ -1,5 +1,5 @@
 import {Stack, StackItem, Text} from "@fluentui/react";
-import {useKeyButtonStyles} from "./Keyboard.styles";
+import {useKeyButtonStyles} from "../Styles/Keyboard.styles";
 
 interface IAlphaNumericButton {
     inputSequence:string;
