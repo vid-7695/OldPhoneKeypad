@@ -1,4 +1,4 @@
-import {Button} from "@fluentui/react"
+import StackItem, {Button} from "@fluentui/react"
 import {Stack} from "@fluentui/react/lib/Stack"
 import {useReducer} from "react";
 import {AlphaNumberButton} from "./AlphaNumericButton";
@@ -13,6 +13,7 @@ import {
     twoPressAction
 } from "./Action";
 import {getChar, isDelayedKeyPress} from "./KeyBoardCommonUtils";
+import {useKeyButtonStyles} from "./Keyboard.styles";
 
 
 
@@ -27,15 +28,12 @@ export const Keyboard:React.FC = () => {
             updatedButtonCounter =1 ;
 
         } else {
-            //Immediate key press
             updatedString = updatedString + payLoad.charAt(0);
             updatedButtonCounter = updatedButtonCounter+1;
         }
-        console.log("Updated State");
-        console.log(updatedButtonCounter)
         return {currentButtonCounter: updatedButtonCounter, currentString: updatedString};
     }
-
+    const styles = useKeyButtonStyles();
     const reducer =  (state:State, action:Action) => {
         console.log(state);
         const  {type, payload} = action;
@@ -48,30 +46,36 @@ export const Keyboard:React.FC = () => {
 
 
     return (
-            <Stack>
+        <Stack>
+            <Stack.Item>
                 {state.currentValue}
-            <Stack horizontal>
-                <Button onClick={() => dispatch(onePressAction)}>
-                    <AlphaNumberButton inputSequence={"1"} buttonID={0} />
-                </Button>
-                <Button onClick={() => dispatch(twoPressAction)}>
-                    <AlphaNumberButton inputSequence={"2abc"} buttonID={1}/>
-                </Button>
-                <Button onClick={()=> dispatch(threePressAction)}>
-                    <AlphaNumberButton buttonID={2} inputSequence={"3def"}/>
-                </Button>
-            </Stack>
+            </Stack.Item>
+            <Stack.Item>
                 <Stack horizontal>
-                    <Button onClick={()=> dispatch(fourPressAction)}>
-                         <AlphaNumberButton inputSequence={"4ghi"} buttonID={3}/>
+                    <Button onClick={() => dispatch(onePressAction)} styles = {styles.alphaNumericButtonStyle}>
+                        <AlphaNumberButton inputSequence={"1"} buttonID={0} />
                     </Button>
-                    <Button onClick={() => dispatch(fivePressAction)}>
+                    <Button styles = {styles.alphaNumericButtonStyle} onClick={() => dispatch(twoPressAction)}>
+                        <AlphaNumberButton inputSequence={"2abc"} buttonID={1}/>
+                    </Button>
+                    <Button styles = {styles.alphaNumericButtonStyle} onClick={()=> dispatch(threePressAction)}>
+                        <AlphaNumberButton buttonID={2} inputSequence={"3def"}/>
+                    </Button>
+                </Stack>
+            </Stack.Item>
+            <Stack.Item>
+                <Stack horizontal>
+                    <Button styles = {styles.alphaNumericButtonStyle} onClick={()=> dispatch(fourPressAction)}>
+                        <AlphaNumberButton inputSequence={"4ghi"} buttonID={3}/>
+                    </Button>
+                    <Button styles = {styles.alphaNumericButtonStyle} onClick={() => dispatch(fivePressAction)}>
                         <AlphaNumberButton inputSequence={"5jkl"} buttonID={4}/>
                     </Button>
-                    <Button >
+                    <Button styles = {styles.alphaNumericButtonStyle} >
                         <AlphaNumberButton inputSequence={""} buttonID={5}/>
                     </Button>
                 </Stack>
-            </Stack>
+            </Stack.Item>
+        </Stack>
     )
 }

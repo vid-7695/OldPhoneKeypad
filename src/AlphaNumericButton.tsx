@@ -1,4 +1,5 @@
-import {Stack, StackItem} from "@fluentui/react";
+import {Stack, StackItem, Text} from "@fluentui/react";
+import {useKeyButtonStyles} from "./Keyboard.styles";
 
 interface IAlphaNumericButton {
     inputSequence:string;
@@ -8,14 +9,14 @@ interface IAlphaNumericButton {
 export const AlphaNumberButton:React.FC<IAlphaNumericButton> = ({inputSequence, buttonID}) => {
     const topCharacter = inputSequence[0];
     const bottomSequence = inputSequence.slice(1, inputSequence.length);
-
+    const styles = useKeyButtonStyles();
     return (
         <Stack>
-            <StackItem>
-                {topCharacter}
+            <StackItem styles={styles.textContainerStyle}>
+                <Text variant="large" styles = {styles.numberTextStyles}> {topCharacter}</Text>
             </StackItem>
-            <StackItem>
-                {bottomSequence}
+            <StackItem >
+                <Text styles={styles.charSequenceStyles}>{bottomSequence}</Text>
             </StackItem>
         </Stack>
     )
