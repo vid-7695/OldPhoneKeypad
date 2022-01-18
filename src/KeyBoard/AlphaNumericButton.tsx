@@ -3,10 +3,8 @@ import {useKeyButtonStyles} from "../Styles/Keyboard.styles";
 
 interface IAlphaNumericButton {
     inputSequence:string;
-    buttonID:number;
-    onChangeEvent?: any;
 }
-export const AlphaNumberButton:React.FC<IAlphaNumericButton> = ({inputSequence, buttonID}) => {
+export const AlphaNumberButton:React.FC<IAlphaNumericButton> = ({inputSequence}) => {
     const topCharacter = inputSequence[0];
     const bottomSequence = inputSequence.slice(1, inputSequence.length);
     const styles = useKeyButtonStyles();

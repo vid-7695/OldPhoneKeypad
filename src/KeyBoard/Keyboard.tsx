@@ -1,4 +1,4 @@
-import StackItem, {Button} from "@fluentui/react"
+import {Button} from "@fluentui/react"
 import {Stack} from "@fluentui/react/lib/Stack"
 import {useReducer} from "react";
 import {AlphaNumberButton} from "./AlphaNumericButton";
@@ -53,26 +53,26 @@ export const Keyboard:React.FC = () => {
             <Stack.Item>
                 <Stack horizontal>
                     <Button onClick={() => dispatch(onePressAction)} styles = {styles.alphaNumericButtonStyle}>
-                        <AlphaNumberButton inputSequence={"1"} buttonID={0} />
+                        <AlphaNumberButton inputSequence={onePressAction.payload}  />
                     </Button>
                     <Button styles = {styles.alphaNumericButtonStyle} onClick={() => dispatch(twoPressAction)}>
-                        <AlphaNumberButton inputSequence={"2abc"} buttonID={1}/>
+                        <AlphaNumberButton inputSequence={twoPressAction.payload} />
                     </Button>
                     <Button styles = {styles.alphaNumericButtonStyle} onClick={()=> dispatch(threePressAction)}>
-                        <AlphaNumberButton buttonID={2} inputSequence={"3def"}/>
+                        <AlphaNumberButton inputSequence={threePressAction.payload}/>
                     </Button>
                 </Stack>
             </Stack.Item>
             <Stack.Item>
                 <Stack horizontal>
                     <Button styles = {styles.alphaNumericButtonStyle} onClick={()=> dispatch(fourPressAction)}>
-                        <AlphaNumberButton inputSequence={"4ghi"} buttonID={3}/>
+                        <AlphaNumberButton inputSequence={fourPressAction.payload} />
                     </Button>
                     <Button styles = {styles.alphaNumericButtonStyle} onClick={() => dispatch(fivePressAction)}>
-                        <AlphaNumberButton inputSequence={"5jkl"} buttonID={4}/>
+                        <AlphaNumberButton inputSequence={fivePressAction.payload}/>
                     </Button>
                     <Button styles = {styles.alphaNumericButtonStyle} >
-                        <AlphaNumberButton inputSequence={""} buttonID={5}/>
+                        <AlphaNumberButton inputSequence={""} />
                     </Button>
                 </Stack>
             </Stack.Item>
