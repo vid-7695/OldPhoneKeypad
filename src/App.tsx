@@ -1,11 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import {OldKeyboard} from "./OldKeyboard";
+import {Keyboard} from "./Keyboard";
 
 function App() {
   return (
     <div className="App">
-      <OldKeyboard/>
+        <Keyboard/>
     </div>
   );
 }
