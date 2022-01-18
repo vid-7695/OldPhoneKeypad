@@ -32,7 +32,7 @@ export const useKeyButtonStyles = (): IStyle =>
                     margin: 4,
                 },
                 rootHovered: {
-                    backgroundColor:
+                    backgroundColor: 'black',
                 },
             },
             textContainerStyle: {
